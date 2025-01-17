@@ -56,7 +56,7 @@ sequenceDiagram
 sequenceDiagram
     participant browser
     participant server
-
+    
     browser->>browser: User types a note in the text field
     browser->>browser: User clicks the "save" button
 
