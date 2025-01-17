@@ -43,6 +43,20 @@ sequenceDiagram
     participant browser
     participant server
 
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML page with JavaScript (spa.js)
+    deactivate server
+
+    browser->>browser: Execute JavaScript to render the page and display notes
+```
+
+# Exercise 0.6
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+    
     browser->>browser: User types a note in the text field
     browser->>browser: User clicks the "save" button
 
