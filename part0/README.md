@@ -1,10 +1,9 @@
 # Exercise 0.4
-
+```mermaid
 sequenceDiagram
     participant browser
     participant server
 
-    browser->>browser: User click on the text field
     browser->>browser: User types "hello friend" in the text field
     browser->>browser: User clicks the "save" button
 
@@ -36,3 +35,25 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes, including the new note
+```
+
+# Exercise 0.5
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>browser: User types a note in the text field
+    browser->>browser: User clicks the "save" button
+
+    browser->>browser: Prevent default form submission (e.preventDefault())
+    browser->>browser: Create a new note and add it to the notes list
+    browser->>browser: Redraw the notes list with the new note
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+    server-->>browser: HTTP 201 Created (no page reload)
+    deactivate server
+
+    Note right of browser: The page stays the same and the new note is displayed without a reload
+```
