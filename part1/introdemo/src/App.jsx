@@ -1,29 +1,41 @@
-const Hello = (props) => {
+const Header = ({course}) => {
+  return <h1>{course}</h1>;
+};
 
-  console.log(props)
+const Content = ({parts}) => {
   return (
     <div>
-      <p>
-
-        Hello {props.name}, you are {props.age} years old
-      </p>
+      {parts.map((part) => (
+        <p key={part.id}>
+          {part.name} {part.exercise}
+        </p>
+      ))}
     </div>
   )
 }
+
+const Total = ({total}) => {
+  return <p>Number of exercises {total}</p>;
+};
 
 const App = () => {
+  const course = 'Half Stack application development'
 
-  const name = 'Peter'
-  const age = 10
+  const parts = [
+    {id: 1, name: 'Fundamentals of React', exercise: 10},
+    {id: 2, name: 'Using props to pass data', exercise: 7},
+    {id: 3, name: 'State of a component', exercise: 14},
+  ]
+
+  const total = parts.reduce((sum,part)=> sum + part.exercise,0)
 
   return (
     <div>
-      <h1>Greetings</h1>
-
-      <Hello name='Maya' age={26 + 10} />
-      <Hello name={name} age={age} />
+      <Header course={course}/>
+      <Content parts={parts}/>
+      <Total total={total}/>
     </div>
-  )
-}
+  );
+};
 
 export default App
